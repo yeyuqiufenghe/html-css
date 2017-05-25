@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报纸排版</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #ct{
+            height:1386px;
+            width:980px;
+            border:1px solid #938e8c;
+            margin: 0 auto;
+        }
+        .header{
+            height: 60px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-bottom: 2px solid #cccccc;
+        }
+        .header .log{
+            background: #ff4a5f;
+            height: 60px;
+            width: 100px;
+            float: left;
+        }
+        .header .log a{
+            display: inline-block;
+            font-size: 12px;
+            margin: 40px 10px;
+            text-decoration: none;
+            color:white;
+        }
+        .header .date{
+            float:right;
+            height: 20px;
+            margin-top:40px;
+            font-size: 12px;
+            color: #d45d5c;
+        }
+        .main .left{
+            float: left;
+           height: 301px;
+            width: 641px;
+            border:1px solid white;
+            margin: 20px;
+        }
+        .main .left .left1{
+            height:300px;
+            width: 191px;
+            opacity:0.5;
+            background: forestgreen;
+            float:left;
+            margin-top: -304px;
+        }
+        .main .left .left2{
+            height:300px;
+            width: 191px;
+            opacity:0.5;
+            background: #8b4b69;
+            float:right;
+            margin-top: -304px;
+        }
+        .main .right{
+            float: left;
+            height: 300px;
+            width: 203px;
+            border-top:2px solid #cc8091;
+            margin: 20px;
+        }
+        .main .right .p1,.p2{
+            font-size: 24px;
+            line-height: 40px;
+        }
+        .main .right .p1:after{
+            content: '';
+            display: block;
+            width: 90px;
+            border-bottom: 3px solid black;
+        }
+        .main .right .p2:after{
+            content: '';
+            display: block;
+            width: 170px;
+            border-bottom: 3px solid black;
+        }
+        .main .right .p1:first-letter{
+            font-size: 1.5em;
+        }
+        .main .right .p2:first-letter{
+            font-size: 1.5em;
+        }
+        .main .right .p3{
+            font-size: 12px;
+            color: #676767;
+            line-height: 10px;
+            margin-top: 5px;
+        }
+        .main .right .p4{
+            font-size:116px;
+            color: #75b86b;
+
+        }
+        .main .right .p5{
+            display: block;
+            font-size:55px;
+            color: #cc8091;
+            line-height: 25px;
+            float:left;
+        }
+        .main .right .pp{
+            float: left;
+        }
+        .main .right .p6{
+            font-size: 21px;
+            margin-top:2px;
+            line-height:21px;
+            color: #cc8091;
+        }
+        .main .right .p7{
+            font-size: 12px;
+            line-height: 12px;
+            color: #cc8091;
+        }
+        .main:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+
+        .content{
+            width:auto;
+            height: 200px;
+            border: 1px;
+            margin: 20px;
+        }
+        .content p{
+            text-indent: 2em;
+            font-size: 12px;
+            line-height: 16px;
+            opacity: 0.8;
+            letter-spacing:2px;
+           text-align: justify;
+        }
+        .content1{
+            width: 30%;
+            border:1px;
+            margin-right: 20px;
+            float: left;
+        }
+        .content2{
+            width: 30%;
+            border:1px;
+            margin-right: 20px;
+            float: left;
+        }
+        .content3{
+            width: 30%;
+            border:1px;
+            float: left;
+            margin-right: 20px;
+        }
+        .content1 h1{
+            line-height: 30px;
+            font-size: 16px;
+            color: forestgreen;
+            text-decoration: underline;
+        }
+        .content2 h1{
+             line-height: 30px;
+             font-size: 16px;
+             color:orange;
+             text-decoration: underline;
+        }
+        .content3 h1{
+              line-height: 30px;
+              font-size: 16px;
+              color:#cc7680;
+              text-decoration: underline;
+         }
+
+
+        .content_last{
+            height: 660px;
+            width: auto;
+            margin: 20px;
+            border: 1px;
+        }
+        .content_left{
+            height: 660px;
+            width: 454px;
+            border: 1px;
+            float: left;
+
+        }
+        .content_left span{
+            color: yellow;
+            font-size: 72px;
+        }
+        .content_left .p1{
+            color: #11456b;
+            font-size: 42px;
+        }
+        .content_left .p2{
+            color: #11456b;
+            font-size: 33px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 2px solid #11456b;
+            padding-bottom: 10px;
+        }
+        .content_left .p3{
+            padding-top: 10px;
+            color: #767777;
+            font-size: 12px;
+            text-align: justify;
+        }
+        .content_left .p3:first-letter{
+            color: yellow;
+            font-size: 70px;
+            display: block;
+            float: left;
+        }
+        .content_left img{
+            display: block;
+            float: right;
+           margin: 20px 0 20px 20px;
+        }
+        .content_left .p4{
+            color: #767777;
+            font-size: 12px;
+            text-indent: 2em;
+            text-align: justify;
+        }
+
+        .content_right{
+            height: 660px;
+            width: 458px;
+            border: 1px;
+            float: left;
+            margin-left: 20px;
+        }
+        .content_right .item1{
+            background: url("img/33.jpg") no-repeat;
+            height:275px;
+            width: 458px;
+            border:1px solid white;
+            opacity: 0.8;
+        }
+        .content_right .ctt{
+            height: 61px;
+            width: 456px;
+            background: black;
+            margin-top: 214px;
+            margin-left: 2px;
+            opacity: 0.8;
+        }
+        .content_right .ctt .p1{
+            display:block;
+            float: left;
+            border-left:3px solid green;
+            height: 44px;
+            margin: 8px 20px ;
+        }
+        .content_right .ctt .p2{
+           line-height: 60px;
+            padding-left: 10px;
+            color: white;
+            font-size: 26px ;
+            text-decoration: none;
+            float: left;
+        }
+        .content_right .ctt .p3{
+            display: block;
+            float:left;
+            color: #75b86b;
+            padding-top: 30px;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        .content_right .item2{
+            height: 365px;
+            margin-top:20px;
+            background: #fcdaff;
+        }
+        .content_right .item2 .p4{
+            margin: 20px;
+        }
+        .content_right .item2 .p4 p{
+            text-align: justify;
+        }
+        .content_right .item2 span{
+            display: inline-block;
+            width: 0;
+            height:0;
+            border-top: 10px solid black;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            margin-right:10px;
+        }
+        .content_right .item3{
+            height: 160px;
+            width:260px;
+            background: #d45d5c;
+            float: left;
+            margin-top: 58px;
+        }
+        .content_right .item4{
+            height: 160px;
+            width:180px;
+            float: left;
+            margin-top: 58px;
+            margin-left: 16px;
+            border:1px ;
+            overflow: hidden;
+            word-wrap: break-word;
+
+        }
+        .content_right .item4:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .content_right .item4 blockquote{
+            position: relative;
+            text-indent: 2em;
+        }
+        .content_right .item4 blockquote::before{
+            position: absolute;
+            color: #392570;
+            content: "“";
+            font-size: 72px;
+            margin-top: -10px;
+            margin-left: -94px;
+            font-family: serif;
+            font-weight: bolder;
+        }
+        .content_right .item4 blockquote::after{
+            position: absolute;
+            color: #392570;
+            content: "”";
+            font-size: 72px;
+            margin-top: 20px;
+            margin-left: 100px;
+            font-family: serif;
+            font-weight: bolder;
+        }
+        .content_right .item3 .p1{
+            font-size: 110px;
+            line-height: 160px;
+            color: white;
+            margin-left: 4px;
+            float: left;
+        }
+        .content_right .item3 .p2{
+            border-left: 2px solid white;
+            height: 86px;
+            float: left;
+            margin-top: 37px;
+            margin-left: 4px;
+        }
+
+        .content_right .item3 .p3{
+            display: block;
+            color: white;
+            font-size: 21px;
+            margin-left: 83px;
+            margin-top: 20px;
+        }
+        .content_right .item3 .p4{
+            display: block;
+            color: white;
+            font-size: 12px;
+            margin-left: 83px;
+            margin-top: 0;
+        }
+        .footer{
+            height: 30px;
+            border-bottom:2px solid #cccccc;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="ct">
+    <div class="header">
+        <div class="log">
+            <a href="#">ife.BaiDu.com</a>
+        </div>
+        <div class="date">
+            <p>2017.03</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="left">
+            <img src="img/1.jpeg" height="301" width="640"/>
+            <div class="left1"></div>
+            <div class="left2"></div>
+        </div>
+        <div class="right">
+            <p class="p1">ABOUT</p>
+            <P class="p2">TECHNOLOGE</P>
+            <P class="p3">About technologe  about technologe about technologe</P>
+            <p class="p4"><i>700</i></p>
+            <p class="p5">3.2</p>
+            <div class="pp">
+            <p class="p6">css </p>
+            <p class="p7">csscsscsscss</p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content1">
+            <h1>What</h1>
+            <p>前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端</p>
+        </div>
+        <div class="content2">
+            <h1>When</h1>
+            <p>前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端</p>
+
+        </div>
+        <div class="content3">
+            <h1>How</h1>
+            <p>前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端前端前端前端前端前端
+                前端前端前端前端前端前端前端</p>
+
+        </div>
+    </div>
+    <div class="content_last">
+        <div class="content_left">
+            <div class="item1">
+                <p class="p1"><span><i>THE</i></span>&nbsp; TECHNOLOGE OF FRONT</p>
+                <p class="p2">前端技术领域</p>
+                <p class="p3">前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端<img src="img/22.jpg" height="200" width="120"/>前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端
+                </p>
+                <p class="p4">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端前端前端前端前端前端
+                    前端前端前端前端前端前端前端</p>
+
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="item1">
+                <div class="ctt">
+                    <p class="p1"></p>
+                    <p class="p2">前端技术</p>
+                    <p class="p3"><i>前端技术前端技术</i></p>
+                </div>
+                <div class="item2">
+                    <div class="p4">
+                    <p><span></span>前端前端前端前端。。。。。。。。。。。。。。前端</p>
+                    <br>
+                    <p><span></span>前端前端前端。。。。。。。。。。。。。。。。前端</p>
+                    <br>
+                    <p><span></span>前端前端前端前端前。。。。。。。。。。。。。前端</p>
+                    <br>
+                    </div>
+                    <div class="item3">
+                        <p class="p1">0</p>
+                        <p class="p2"></p>
+                        <p class="p3"><i>ONE TWO THREE FORE FIVE</i></p>
+                        <p class="p4">HELLO WORLD HELLO WORLD HELLO WORLD HELLO WORLD</p>
+                    </div>
+                    <div class="item4">
+                        <blockquote>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+</div>
+</body>
+</html>
